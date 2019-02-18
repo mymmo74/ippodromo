@@ -1,5 +1,4 @@
-
-var indice = 0;
+// stabilisco le posizioni di partenza dei cavalli (assegnando la proprietà top)
 document.querySelector("#cavallo1").style.left = "0px";
 document.querySelector("#cavallo1").style.top = "50px";
 
@@ -16,25 +15,27 @@ document.querySelector("#cavallo5").style.left = "0px";
 document.querySelector("#cavallo5").style.top = "450px";
 
 
-var id1=setInterval(function () {
-    muovi("#cavallo1", Math.random() * 200, 0,id1);
+// setto i timer, di ognuna mi faccio restituire un id, che mi servirà per stoppare il timer
+var id1 = setInterval(function () {
+    muovi("#cavallo1", Math.random() * 200, 0, id1);
 }, 1000);
-var id2=setInterval(function () {
-    muovi("#cavallo2", Math.random() * 200, 0,id2);
+var id2 = setInterval(function () {
+    muovi("#cavallo2", Math.random() * 200, 0, id2);
 }, 1000);
-var id3=setInterval(function () {
-    muovi("#cavallo3", Math.random() * 200, 0,id3);
+var id3 = setInterval(function () {
+    muovi("#cavallo3", Math.random() * 200, 0, id3);
 }, 1000);
-var id4=setInterval(function () {
-    muovi("#cavallo4", Math.random() * 200, 0,id4);
+var id4 = setInterval(function () {
+    muovi("#cavallo4", Math.random() * 200, 0, id4);
 }, 1000);
-var id5=setInterval(function () {
-    muovi("#cavallo5", Math.random() * 200, 0,id5);
+var id5 = setInterval(function () {
+    muovi("#cavallo5", Math.random() * 200, 0, id5);
 }, 1000);
 
 
-function muovi(str, x, y,id) {
-
+// funzione principale per il movimento e controllo di vittoria del cavallo
+function muovi(str, x, y, id) {
+    // rilevo la posizione dei cavalli e aggiungo l'allungo corrente
     let posX = parseFloat(document.querySelector(str).style.left);
     let posY = parseFloat(document.querySelector(str).style.top);
     posX += x;
@@ -42,37 +43,37 @@ function muovi(str, x, y,id) {
     document.querySelector(str).style.left = posX + "px";
     document.querySelector(str).style.top = posY + "px";
 
-    if (posX+100>= window.innerWidth){
-        document.querySelector("#div_info").innerHTML="";
-        document.querySelector("#result").style.display="block";
-        for (let r=1;r<=5;r++){
-            let posizione=document.querySelector("#pos"+r).innerHTML;
-            if (posizione === ""){
-                document.querySelector("#pos"+r).innerHTML=document.querySelector(str).alt;
+    // verifico la posizione del cavallo, se ha tagliato il traguardo
+    // l'immagine cavallo è larga 100px, ecco perchè verifico se a tagliare
+    // il traguardo è la parte iniziale del cavallo
+    if (posX + 100 >= window.innerWidth) {
+        // cancello l'eventuale box informazioni cavalli
+        document.querySelector("#div_info").innerHTML = "";
+        // visualizzo il box per l'ordine di arrivo
+        document.querySelector("#result").style.display = "block";
+        // effettuo la verifica della posizione d'arrivo
+        for (let r = 1; r <= 5; r++) {
+            let posizione = document.querySelector("#pos" + r).innerHTML;
+            // se il contenuto dello span con id (pos+r) è vuoto, allora questa è la posizione del cavallo
+            if (posizione === "") {
+                // assegno allo span la proprietà "ALT" dell'immagine, vi è contenuto il nome del cavallo
+                document.querySelector("#pos" + r).innerHTML = document.querySelector(str).alt;
+                // stoppo il timer (il cavallo può fermare la sua corsa)
                 clearInterval(id);
+                // esco dal ciclo for
                 break;
             }
         }
-//        document.querySelector("#result").innerHTML = "Ha vinto " + document.querySelector(str).alt;
-//        stop();
     }
+    // stampo sulla console il cavallo e le relative posizioni sullo schermo
     console.log(str, posX, posY);
 }
 
-function stop(){
-    clearInterval(id1);
-    clearInterval(id2);
-    clearInterval(id3);
-    clearInterval(id4);
-    clearInterval(id5);
-}
-//function informazioni() {
-    document.querySelectorAll(".horse").forEach(function (elm, k) {
-        elm.onclick=function(){
-            document.querySelector("#div_info").innerHTML = "Hai fatto click su "+elm.alt;
-        };
-        
-    });
-//}
-console.log("pagina gioco js caricata!");
-//console.log(sx, alto);al(function() {muovi("#bicicletta",Math.random()*6,0);},1000);
+// con questa query verifico se è stato fatto click su di un cavallo (a gara iniziata)
+// e ne stampo in un box le relative informazioni
+document.querySelectorAll(".horse").forEach(function (elm, k) {
+    elm.onclick = function () {
+        document.querySelector("#div_info").innerHTML = "Hai fatto click su " + elm.alt;
+    };
+
+});

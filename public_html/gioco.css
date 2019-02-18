@@ -1,14 +1,15 @@
-
 /* 
     Created on : 4-feb-2019, 11.44.23
     Author     : tss
 */
 
 body{
+    /* disattivo le scroll bar e imposto colore di sfondo */
     overflow: hidden;
     background-color:  tan;
 }
 
+/* box per visualizzare l'ordine d'arrivo */
 #result{
     border: solid 1px black;
     border-radius: 40px;
@@ -16,6 +17,7 @@ body{
     color: white;
     width: 250px;
     height: 120px;
+    /*inizialmente il box non è visualizzato, lo visualizzerà una funzione javascript */
     display: none;
     text-align: center;
 }
@@ -27,30 +29,7 @@ body{
 #div_info{
     position: absolute;
 }
-#fDialogo {
-    left: 200px;
-    top: 400px;
-    position: absolute;
-}
 
-
-#cavallo1{
-    position: absolute;
-    
-}
-
-#cavallo2{
-    position: absolute;
-}
-
-#cavallo3{
-    position: absolute;
-}
-
-#cavallo4{
-    position: absolute;
-}
-
-#cavallo5{
+.horse {
     position: absolute;
 }
