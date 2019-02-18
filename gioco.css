@@ -1,0 +1,35 @@
+/* 
+    Created on : 4-feb-2019, 11.44.23
+    Author     : tss
+*/
+
+body{
+    /* disattivo le scroll bar e imposto colore di sfondo */
+    overflow: hidden;
+    background-color:  tan;
+}
+
+/* box per visualizzare l'ordine d'arrivo */
+#result{
+    border: solid 1px black;
+    border-radius: 40px;
+    background-color: blue;
+    color: white;
+    width: 250px;
+    height: 120px;
+    /*inizialmente il box non è visualizzato, lo visualizzerà una funzione javascript */
+    display: none;
+    text-align: center;
+}
+
+#div_ippodromo{
+    position: absolute;
+}
+
+#div_info{
+    position: absolute;
+}
+
+.horse {
+    position: absolute;
+}
