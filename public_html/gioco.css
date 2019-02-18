@@ -1,0 +1,56 @@
+
+/* 
+    Created on : 4-feb-2019, 11.44.23
+    Author     : tss
+*/
+
+body{
+    overflow: hidden;
+    background-color:  tan;
+}
+
+#result{
+    border: solid 1px black;
+    border-radius: 40px;
+    background-color: blue;
+    color: white;
+    width: 250px;
+    height: 120px;
+    display: none;
+    text-align: center;
+}
+
+#div_ippodromo{
+    position: absolute;
+}
+
+#div_info{
+    position: absolute;
+}
+#fDialogo {
+    left: 200px;
+    top: 400px;
+    position: absolute;
+}
+
+
+#cavallo1{
+    position: absolute;
+    
+}
+
+#cavallo2{
+    position: absolute;
+}
+
+#cavallo3{
+    position: absolute;
+}
+
+#cavallo4{
+    position: absolute;
+}
+
+#cavallo5{
+    position: absolute;
+}
